@@ -1,0 +1,65 @@
+<div class="card">
+    <div class="card-body">
+        <div class="input-group mb-3">
+            <h5 class="card-text mt-2" style="margin-left: 10%;">Busqueda de Espectaculos </h5>
+            <input type="text" class="form-control input" type="search" placeholder="Search" aria-label="Search" name="filter" [(ngModel)]="filtercard">
+            <span class="material-icons" role="button">
+                search
+            </span>
+            <div class=" login ">
+                <a class="card-text " role="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >Login/Register</a>
+                <h6 class="card-subtitle text-muted ">Olvido Contraseña?</h6>
+            </div>
+            <span class="material-icons ">
+                person
+            </span>
+        </div>
+
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <app-login></app-login>
+</div>
+
+
+<div class="card1 " style="display: flex; ">
+    <div class="col-sm-2 card3 text-center " style="background-color: var(--gray2); border: transparent; margin-left: 6%; ">
+        <div class="card-body ">
+            <h5 class="card-text ">Destacados</h5>
+        </div>
+    </div>
+    <div class="col-sm-2 card3 text-center ">
+        <div class="card-body ">
+            <h5 class="card-text ">Todos</h5>
+        </div>
+    </div>
+    <div class="col-sm-2 card3 text-center ">
+        <div class="card-body ">
+            <select class="form-select form-select-sm card-text " aria-label=".form-select-sm example" [(ngModel)]="opcionSelecct" (change)="searchCategory()">
+                <option value="0" selected>Categoria</option>
+                <option value="{{selec}}" *ngFor="let selec of select">{{selec}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-sm-2 card3 text-center ">
+        <div class="card-body ">
+            <select class="form-select form-select-sm card-text " aria-label=".form-select-sm example" [(ngModel)]="opicionFilterMes" (change)="searchFilterMes()">
+                <option value="0" selected>Filtrar por Mes</option>
+                <option value=" {{filter}}" *ngFor="let filter of filterMes"> {{filter}} </option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="row ">
+    <div class="col-sm-2 card2 text-center" *ngFor="let card of cards |slice:0:24 |filter: filtercard">
+        <div class="card-body contenedor ">
+            <p class="card-text " style="background-color: var(--blue);margin: 0px 0px 0px !important; ">
+                {{card.birthday}}</p>
+            <!-- <img src="../assets/img/virsky-concerts.jpg " class="card-img-top " alt="... "> -->
+            <img [src]="card.img " class="card-img-top img" alt="... ">
+            <p class="card-text " style="background-color: var(--black); ">{{card.name}}</p>
+            <a href="# " class="btn ">Comprar Ticket</a>
+        </div>
+    </div>
+</div>
